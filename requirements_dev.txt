@@ -1,0 +1,9 @@
+pycodestyle
+pydocstyle
+mypy
+bandit
+black
+black [jupyter]
+
+# mypy stubs
+types-requests

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: fake_wiga-api
+    image: fake_wiga-fastapi:v1.0
+    build:
+      context: ..
+      dockerfile: ./iac/fake_wiga.Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - fake_wiga
+    volumes:
+      - ../be:/code/be
+
+networks:
+  fake_wiga:
+
+
