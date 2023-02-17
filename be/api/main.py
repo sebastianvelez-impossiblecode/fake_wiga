@@ -1,5 +1,5 @@
 """API monitor and admin app."""
-from datetime import datetime
+from datetime import datetime, timezone
 import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,10 +11,14 @@ api = FastAPI(
 )
 
 
-@api.on_event("startup")
-@repeat_every(seconds=10)
-def scheduler_test() -> None:
-    response = requests.get("http://localhost:8080/weather/alive")
+# @api.on_event("startup")
+# @repeat_every(seconds=10)
+# def scheduler_test() -> None:
+#     now = datetime.now(timezone.utc)
+#     if 40 <= now.second and now.second < 50:
+#         now_str = now.strftime("%Y-%m-%d %H:%M:%S")
+#         print(f"Request made at {now_str}")
+#         response = requests.get("http://localhost:8080/weather/alive")
 
 
 # Cors Settings
@@ -31,8 +35,8 @@ api.add_middleware(
 
 from .endpoints.weather_data import router as weather
 from .endpoints.sensors import router as sensors
-from .endpoints.get_endpoint import router as alive
+from .endpoints.alive import router as alive
 
 api.include_router(weather)
 api.include_router(sensors)
-api.include_router(alive)
+# api.include_router(alive)
