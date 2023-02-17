@@ -26,3 +26,11 @@ class WeatherOutSchema(BaseModel):
     """GET(/orders/) Response Model."""
 
     sensors: list[dict]
+
+
+class SensorsOutSchema(BaseModel):
+    """GET(/sensors/) Response Model."""
+
+    id: int
+    Nombre: str
+    otra_vaina: int

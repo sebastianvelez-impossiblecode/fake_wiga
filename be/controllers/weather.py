@@ -41,6 +41,4 @@ def read_weather_file(filters: WeatherInSchema) -> list[dict]:
         datos = subdf.to_dict(orient="records")
         sensor_dict["datos"] = datos
         weather_data.append(sensor_dict)
-    print("HERE THE TYPE OF WEATHER DATA:", type(weather_data))
-    print("HERE THE TYPE OF WEATHER DATA elements:", type(weather_data[0]))
     return weather_data

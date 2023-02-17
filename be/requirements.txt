@@ -2,6 +2,7 @@ numpy
 pandas
 requests
 fastapi
+fastapi_utils
 uvicorn
 pydantic
 openpyxl
